@@ -1,32 +1,24 @@
 <template>
   <h1>Hello Vite + Vue 3!</h1>
-<!--  <p>Edit ./App.vue to test hot module replacement (HMR).</p>-->
-<!--  <p>-->
-<!--    <span>Count is: {{ count }}</span>-->
-<!--    <br/>-->
-<!--    <span @click="changeName">name is: {{ name }}</span>-->
-<!--    <br/>-->
-<!--    <button @click="count++">increment</button>-->
-<!--  </p>-->
-<!--  <com ccc="666"/>-->
-  <watch />
+  <div>message is {{ msg1 }} {{msg2}}</div>
+  <br />
+  <children />
 </template>
 
 <script>
-// import com from './com.vue'
-import watch from './watch.vue'
+import { reactive } from 'vue'
+import Children from './components/Children.vue'
 export default {
   components: {
-    // com
-    watch
+    Children
   },
   data: () => ({
-    count: 0,
-    name: 'zhangsan'
+    msg1: 'hello'
   }),
-  methods: {
-    changeName () {
-      this.name = 'lisi'
+  setup () {
+    const msg2 = 'world'
+    return {
+      msg2
     }
   }
 }
